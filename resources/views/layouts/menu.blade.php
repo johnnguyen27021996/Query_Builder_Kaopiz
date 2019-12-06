@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Sign In</a>
+                <a class="nav-link" href="{{ route('login.show') }}">Sign In</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sign Out</a>

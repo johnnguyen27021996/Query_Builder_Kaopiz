@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="83977943-ef69-4f05-93a5-5fb15dae962d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +26,9 @@
         <option value="C:\xampp\htdocs\query_builder_kaopiz\.idea" />
       </set>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -137,6 +141,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -168,7 +173,10 @@
       <updated>1575609036578</updated>
       <workItem from="1575609070015" duration="296000" />
       <workItem from="1575630999760" duration="2876000" />
-      <workItem from="1575640808232" duration="2291000" />
+      <workItem from="1575640808232" duration="3534000" />
+      <workItem from="1575644961367" duration="128000" />
+      <workItem from="1575650172757" duration="3006000" />
+      <workItem from="1575653303190" duration="1122000" />
     </task>
     <servers />
   </component>
@@ -192,5 +200,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1575609415400" />
+    <state x="63" y="0" key="SettingsEditor" timestamp="1575653468182">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="63" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1575653468182" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1575651182181">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1575651182181" />
   </component>
 </project>
