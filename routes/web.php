@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',
+    function () {
+        $posts = DB::table('posts')->orderBy('id', 'desc')->paginate(5);
+        return view('index', compact('posts'));
+    })->name('index.show');
