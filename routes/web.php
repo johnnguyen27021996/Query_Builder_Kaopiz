@@ -88,4 +88,14 @@ Route::get('delete/{id}',
     function ($id) {
         $use = DB::table('posts')->where('id', $id)->delete();
         return redirect()->route('index.show')->with('successMessage', 'Xóa bài đăng thành công');
-    })->name('post.delete');
+    })->name('post.delete')->middleware('customauth');
+Route::get('detail/{id}',
+    function ($id) {
+//        $post = DB::table('posts')->join('comments', 'posts.id', '=' ,'comments.post_id')
+//                                        ->where('posts.id', $id)
+//                                        ->select(['posts.id', 'posts.title', 'posts.content', 'comments.content_comment'])
+//                                        ->get();
+        $post = DB::table('posts')->where('posts.id', $id)->get();
+        $comments = DB::table('comments')->where('post_id', $id)->get();
+        return view('detail', compact('post', 'comments'));
+    })->name('post.detail');
