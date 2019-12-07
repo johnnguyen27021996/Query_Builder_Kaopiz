@@ -5,6 +5,7 @@
 @section('content')
     <div class="col-md-6 offset-md-3">
         <form action="{{ route('login.show') }}" method="post" class="border mt-5 p-3">
+            @csrf
             <h1 class="text-center text-danger">
                 Sign In
             </h1>

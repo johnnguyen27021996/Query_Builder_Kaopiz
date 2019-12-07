@@ -4,7 +4,29 @@
 
 @section('content')
     <div class="col-md-6 offset-md-3">
+        @if(session()->has('errorLogin'))
+            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                <strong>Wrong OOP!</strong> {{ session()->get('errorLogin') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                <ul>
+                    @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        @endif
         <form action="{{ route('login.login') }}" method="post" class="border mt-5 p-3">
+            @csrf
             <h1 class="text-center text-danger">
                 Sign In
             </h1>
