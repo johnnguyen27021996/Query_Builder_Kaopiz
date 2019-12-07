@@ -99,3 +99,16 @@ Route::get('detail/{id}',
         $comments = DB::table('comments')->where('post_id', $id)->get();
         return view('detail', compact('post', 'comments'));
     })->name('post.detail');
+Route::post('comment/{id}',
+    function (Request $request, $id) {
+        $content_comment = $request->comment;
+        $NewComment = DB::table('comments')->insert([
+            'content_comment' => $content_comment,
+            'post_id' => $id
+        ]);
+        if ($NewComment) {
+            return redirect()->route('post.detail', $id)->with('successMessage', 'Bình luận bài đăng thành công');
+        } else {
+            return redirect()->route('post.detail', $id)->with('errorMessage', 'Bình luận bài đăng thất bại');
+        }
+    })->name('comment.create');
