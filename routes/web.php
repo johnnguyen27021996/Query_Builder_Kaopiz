@@ -42,3 +42,20 @@ Route::get('register',
     function () {
         return view('register');
     })->name('register.show');
+Route::post('register',
+    function (\App\Http\Requests\RegisterRequest $request) {
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
+        $password = \Illuminate\Support\Facades\Hash::make($password);
+        $NewUser = DB::table('users')->insert([
+            'name' => $name,
+            'email' => $email,
+            'password' => $password
+        ]);
+        if($NewUser){
+            return redirect()->route('register.show')->with('successMessage', 'Đăng ký thành công hãy đăng nhập');
+        }else{
+            return redirect()->route('register.show')->with('errorMessage', 'Đăng ký thất bại');
+        }
+    })->name('register.register');
