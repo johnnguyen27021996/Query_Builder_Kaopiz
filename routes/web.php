@@ -65,3 +65,21 @@ Route::get('logout',
         $request->session()->flush();
         return redirect()->route('index.show');
     })->name('logout');
+Route::get('create',
+    function () {
+        return view('createPost');
+    })->name('post.create')->middleware('customauth');
+Route::post('create',
+    function (\App\Http\Requests\PostRequest $request) {
+        $title = $request->title;
+        $body = $request->body;
+        $NewPost = DB::table('posts')->insert([
+            'title' => $title,
+            'content' => $body,
+        ]);
+        if($NewPost){
+            return redirect()->route('index.show')->with('successMessage', 'Thêm mới bài đăng thành công');
+        }else{
+            return redirect()->route('post.create')->with('errorMessage', 'Thêm mới bài đăng thất bại');
+        }
+    })->name('post.add')->middleware('customauth');

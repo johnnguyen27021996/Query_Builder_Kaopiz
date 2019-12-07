@@ -4,12 +4,20 @@
 
 @section('content')
     <div class="col-md-12">
+        @if(session()->has('successMessage'))
+            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                <strong>Success!</strong> {{ session()->get('successMessage') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="card mt-2">
             <div class="card-header">
                 <h4 class="float-left">All Posts</h4>
                 @if(session()->has('user'))
                     <div class="float-right">
-                        <a href="" class="btn btn-outline-danger">New Post</a>
+                        <a href="{{ route('post.create') }}" class="btn btn-outline-danger">New Post</a>
                     </div>
                 @endif
             </div>
