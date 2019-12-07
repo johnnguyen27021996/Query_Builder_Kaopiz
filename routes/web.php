@@ -33,7 +33,8 @@ Route::post('login',
             return redirect()->route('login.show')->with('errorLogin', 'Tài khoản không tồn tại');
         }else{
             if(\Illuminate\Support\Facades\Hash::check($password, $user['0']->password)){
-                dd('Thanh Cong');
+                $request->session()->put('user', $user);
+                return redirect()->route('index.show');
             }
             return redirect()->route('login.show')->with('errorLogin', 'Mật khẩu không chính xác');
         }
@@ -59,3 +60,8 @@ Route::post('register',
             return redirect()->route('register.show')->with('errorMessage', 'Đăng ký thất bại');
         }
     })->name('register.register');
+Route::get('logout',
+    function (Request $request) {
+        $request->session()->flush();
+        return redirect()->route('index.show');
+    })->name('logout');
