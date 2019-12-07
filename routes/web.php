@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,10 +30,10 @@ Route::post('login',
         $email = $request->email;
         $password = $request->password;
         $user = DB::table('users')->where('email', $email)->get()->toArray();
-        if(!$user){
+        if (!$user) {
             return redirect()->route('login.show')->with('errorLogin', 'Tài khoản không tồn tại');
-        }else{
-            if(\Illuminate\Support\Facades\Hash::check($password, $user['0']->password)){
+        } else {
+            if (\Illuminate\Support\Facades\Hash::check($password, $user['0']->password)) {
                 $request->session()->put('user', $user);
                 return redirect()->route('index.show');
             }
@@ -54,9 +55,9 @@ Route::post('register',
             'email' => $email,
             'password' => $password
         ]);
-        if($NewUser){
+        if ($NewUser) {
             return redirect()->route('register.show')->with('successMessage', 'Đăng ký thành công hãy đăng nhập');
-        }else{
+        } else {
             return redirect()->route('register.show')->with('errorMessage', 'Đăng ký thất bại');
         }
     })->name('register.register');
@@ -77,9 +78,14 @@ Route::post('create',
             'title' => $title,
             'content' => $body,
         ]);
-        if($NewPost){
+        if ($NewPost) {
             return redirect()->route('index.show')->with('successMessage', 'Thêm mới bài đăng thành công');
-        }else{
+        } else {
             return redirect()->route('post.create')->with('errorMessage', 'Thêm mới bài đăng thất bại');
         }
     })->name('post.add')->middleware('customauth');
+Route::get('delete/{id}',
+    function ($id) {
+        $use = DB::table('posts')->where('id', $id)->delete();
+        return redirect()->route('index.show')->with('successMessage', 'Xóa bài đăng thành công');
+    })->name('post.delete');

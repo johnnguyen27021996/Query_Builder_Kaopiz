@@ -31,6 +31,11 @@
                             {!! \Illuminate\Support\Str::limit($post->content, 200) !!}
                         </div>
                         <a href="" class="btn btn-outline-primary mt-2">See More ...</a>
+                        @if(session()->has('user'))
+                            <div class="float-right">
+                                <a href="{{ route('post.delete', $post->id) }}" onclick="return confirm('Bạn có muốn xóa bài đăng này');" class="btn btn-danger">Delete Post</a>
+                            </div>
+                        @endif
                         <hr>
                     </div>
                 @endforeach
