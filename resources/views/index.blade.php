@@ -33,6 +33,7 @@
                         <a href="{{ route('post.detail', $post->id) }}" class="btn btn-outline-primary mt-2">See More ...</a>
                         @if(session()->has('user'))
                             <div class="float-right">
+                                <a href="{{ route('post.update', $post->id) }}" class="btn btn-success">Update Post</a>
                                 <a href="{{ route('post.delete', $post->id) }}" onclick="return confirm('Bạn có muốn xóa bài đăng này');" class="btn btn-danger">Delete Post</a>
                             </div>
                         @endif

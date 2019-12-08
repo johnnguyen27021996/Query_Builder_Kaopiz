@@ -84,6 +84,24 @@ Route::post('create',
             return redirect()->route('post.create')->with('errorMessage', 'Thêm mới bài đăng thất bại');
         }
     })->name('post.add')->middleware('customauth');
+Route::get('update/{id}',
+    function ($id) {
+        $post = DB::table('posts')->where('id', $id)->get();
+        return view('updatePost', compact('post'));
+    })->name('post.update')->middleware('customauth');
+
+Route::post('update/{id}',
+    function (\App\Http\Requests\PostRequest $request, $id) {
+        $title = $request->title;
+        $body = $request->body;
+        $UpdatePost = DB::table('posts')->where('id', $id)
+                                           ->update(['title' => $title, 'content' => $body]);
+        if ($UpdatePost) {
+            return redirect()->route('index.show')->with('successMessage', 'Sửa bài đăng thành công');
+        } else {
+            return redirect()->route('post.create')->with('errorMessage', 'Sửa bài đăng thất bại');
+        }
+    })->name('post.edit')->middleware('customauth');
 Route::get('delete/{id}',
     function ($id) {
         $use = DB::table('posts')->where('id', $id)->delete();
